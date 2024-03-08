@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/quiz.css";
-import { qBank } from "../../constant/images/questionBank";
+import { qBank } from "../../constant/questionBank";
 import Question from "./Question";
 import Score from "./Score";
 

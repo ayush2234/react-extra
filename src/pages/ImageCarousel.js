@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { images } from "../constant/images/images";
+import { images } from "../constant/images";
 import "../styles/imageCarousel.css";
 
 export default function ImageCarousel() {
