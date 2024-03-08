@@ -1,0 +1,19 @@
+.weather-section{
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   gap: 21px;
+   margin: 4rem 4rem;
+}
+
+.weather-form {
+   display: flex;
+   flex-direction: column;
+   gap: 7px;
+}
+
+.weather-section button {
+   width: 5rem;
+   border: 1px solid darkgrey;
+   border-radius: 0.5rem;
+}

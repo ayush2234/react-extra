@@ -1,0 +1,24 @@
+.sidebar-container{
+  display: flex;
+  flex-direction: column;
+  width: 11rem;
+  gap: 51px;
+  margin-top: 5rem;
+  padding: 8rem 3rem;
+  text-align: center;
+  box-shadow: 1px 0px gainsboro;
+  background-color: linen;
+}
+
+.sidebar-container a {
+  text-decoration: none;
+  color: dimgrey;
+}
+
+.sidebar-container a:hover {
+  color: darkolivegreen;
+}
+
+.sidebar-container a.active-link {
+  color: black  ;
+}

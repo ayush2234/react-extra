@@ -1,0 +1,10 @@
+.navbar-container {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 5rem;
+  align-items: center;
+  box-shadow: 0px 1px gainsboro;
+  background-color: lightgray;
+}

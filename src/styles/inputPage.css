@@ -1,0 +1,41 @@
+.input-container {
+   margin-top: 7rem;
+   margin-left: 2rem;
+}
+
+.inner-container{
+   display: flex;
+   flex-direction: column;
+   width: calc(20rem - 7px);
+   gap: 1rem;
+   padding-right: 1rem;
+   height: 40rem; 
+   overflow-y: hidden; 
+}
+
+.inner-container:hover {
+   overflow-y: scroll;
+   width: 20rem;
+}
+
+.inner-container::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.inner-container::-webkit-scrollbar-track {
+
+}
+
+
+/* Handle */
+.inner-container::-webkit-scrollbar-thumb {
+  background: lightgrey;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+.inner-container::-webkit-scrollbar-thumb:hover {
+  background: darkgrey;
+}
+

@@ -1,0 +1,7 @@
+.timer-container .timer-inactive {
+    cursor: not-allowed;
+}
+
+.timer-container .timer-active {
+    cursor: pointer;
+}

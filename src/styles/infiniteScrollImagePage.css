@@ -1,0 +1,75 @@
+.infinite-scroll-container {
+   height: 32rem;
+   width: 70rem;
+   margin-top: 7rem;
+   margin-left: 7rem;
+}  
+
+.infinite-scroll {
+   position: relative;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 2rem;
+   margin: 1rem;
+}
+
+.infinite-image-container img{
+   background-color: #F2F3F4; 
+   width: 15vw;
+   height: 20vh;    
+   border-radius: 11px;
+   box-shadow: 1px 1px 11px 2px darkgrey;
+   cursor: pointer;
+} 
+
+.infinite-image-container:hover img {
+  opacity:0.4;
+  box-shadow: 1px 1px 11px 2px #888;
+}
+
+.image-button {
+  position: absolute;
+  width: 5rem;
+  display: none;
+  transform: translate(-10rem, 5.5rem);
+  opacity: 0.8;
+  border: 1px solid  darkgrey;
+  border-radius: 5px;
+  height: 25px;
+  transition: all 2s;
+}
+
+.infinite-image-container img:hover+.image-button, .image-button:hover{
+  display: inline;
+}
+
+.image-button:hover{
+  opacity: 1;
+  cursor: pointer;
+  background-color: seagreen;
+  color:  #fff;
+  border: 1px solid  black;
+}
+
+.image-name{
+    margin-left: 5px;
+}
+
+.infinite-scroll-component::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.infinite-scroll-component::-webkit-scrollbar-track {
+}
+
+
+/* Handle */
+.infinite-scroll-component::-webkit-scrollbar-thumb {
+  background: lightgrey;
+  border-radius: 5px;
+}
+/* Handle on hover */
+.infinite-scroll-component::-webkit-scrollbar-thumb:hover {
+  background: darkgrey;
+}
