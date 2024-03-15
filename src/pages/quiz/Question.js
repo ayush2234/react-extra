@@ -8,14 +8,16 @@ export default function Question(props) {
       <div className="question-conatiner">
         <h2>Quiz Question</h2>
         <h4>Question no {question.id}</h4>
-        <h5 className="mt-2">{question.question}</h5>
+        <h5>{question.question}</h5>
         <Option
           options={question.options}
           selectedOption={selectedOption}
           onOptionChange={onOptionChange}
+          id={question.id}
         />
         <button onClick={onSubmit}>Submit</button>
       </div>
     </>
   );
 }
+  

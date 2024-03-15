@@ -30,3 +30,18 @@ export const qBank = [
     answer: "Lucknow",
   },
 ];
+
+export const shuffle = () => {
+  const shuffledQuestionBank = qBank.map((question) => {
+    const shuffledOptions = [...question.options]; // Copy options array to avoid mutation
+    question.options.forEach((option, i) => {
+      const randomIndex = Math.floor(Math.random() * (i + 1));
+      let temp = shuffledOptions[i];
+      shuffledOptions[i] = shuffledOptions[randomIndex];
+      shuffledOptions[randomIndex] = temp;
+    });
+    return { ...question, options: shuffledOptions };
+  });
+  console.log(shuffledQuestionBank);
+  return shuffledQuestionBank;
+};

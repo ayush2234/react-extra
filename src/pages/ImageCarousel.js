@@ -57,7 +57,7 @@ export default function ImageCarousel() {
         >
           <img src={images[currentIndex]}></img>
         </div>
-        <div className="image-button">
+        <div className="image-button-indicator">
           <button
             className={isPrevConditionMet}
             onClick={handlePreviousImage}

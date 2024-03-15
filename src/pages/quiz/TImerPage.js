@@ -11,16 +11,12 @@ export default function TimerPage(props) {
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [timeup, setTimeUp] = useState("");
 
-  const handleTimer = () => {
-    setIsTimerRunning(!isTimerRunning);
-  };
-
   useEffect(() => {
     let timerInterval;
-    onTimerRunning(isTimerRunning);
+    onTimerRunning(isTimerRunning, timeup);
     const timer = () => {
       if (!quizEnd) {
-        if (time.seconds < 30) {
+        if (time.seconds < 10) {
           //&& time.hours < 1
           setTime((prevTime) => ({
             ...prevTime,
@@ -61,6 +57,21 @@ export default function TimerPage(props) {
     };
   }, [isTimerRunning, time.seconds, time.minutes]);
 
+  const handleTimer = () => {
+    setIsTimerRunning(true);
+  };
+
+  const handleRestartTimer = () => {
+    setTime({
+      seconds: 0,
+      minutes: 0,
+      hours: 0,
+    });
+
+    setIsTimerRunning(!isTimerRunning);
+    setTimeUp("");
+  };
+
   console.log(isTimerRunning);
 
   return (
@@ -78,10 +89,13 @@ export default function TimerPage(props) {
           onClick={handleTimer}
           disabled={quizEnd || timeup.length > 0 ? true : false}
         >
-          Start Timer
+          {!isTimerRunning ? "Start Timer" : "Pause Timer"}
         </button>
         {timeup}
+        {(quizEnd || timeup.length > 0) && (
+          <button onClick={handleRestartTimer}>Restart Timer</button>
+        )}
       </div>
     </>
   );
-}
+} 

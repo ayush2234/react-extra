@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/infiniteScrollImagePage.css";
 import { imageResponse } from "../Apis/api";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { images } from "../constant/images/images";
+import { images } from "../constant/images";
 
 export default function Infinite_ScrollImagePage() {
   const [images, setImages] = useState([]);

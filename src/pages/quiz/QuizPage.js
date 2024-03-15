@@ -1,24 +1,28 @@
 import React, { useState } from "react";
 import TimerPage from "./TImerPage";
 import Quiz from "./Quiz";
+import { shuffle } from "../../constant/questionBank";
 
 export default function QuizPage() {
   const [isQuizEnd, setIsQuizEnd] = useState(false);
-  const [isTimeStart, setisTimeStart] = useState(false);
-  const handleQuizEnd = (value) => {
+  const [isTimeUpOrStart, setisTimeUpOrStart] = useState({
+    timerStart: false,
+    timeUp: "",
+  });
+  const handleQuizEnd = (value, updateQuizState) => {
     console.log(value);
-    setIsQuizEnd(value);
+    setIsQuizEnd(value);  
   };
 
-  const handleTImerRunning = (value) => {
+  const handleTimerRunning = (timerStart, timeUp) => {
     setTimeout(() => {
-      setisTimeStart(value);
+      setisTimeUpOrStart({ timerStart, timeUp });
     }, 1000);
   };
   return (
     <>
-      <TimerPage quizEnd={isQuizEnd} onTimerRunning={handleTImerRunning} />
-      <Quiz timerStart={isTimeStart} onQuizEnd={handleQuizEnd} />
+      <TimerPage quizEnd={isQuizEnd} onTimerRunning={handleTimerRunning} />
+      <Quiz timeUpOrStart={isTimeUpOrStart} onQuizEnd={handleQuizEnd} />
     </>
   );
 }

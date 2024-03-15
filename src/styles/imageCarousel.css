@@ -17,12 +17,12 @@
   height: 25rem;
 }
 
-.image-button {
+.image-button-indicator{
   display: flex;
   gap: 11px;
 }
 
-.image-button .disable {
+.image-button-indicator .disable {
   cursor: not-allowed
 }
 

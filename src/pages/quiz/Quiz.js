@@ -1,21 +1,33 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/quiz.css";
 import { qBank } from "../../constant/questionBank";
+import { shuffle } from "../../constant/questionBank";
 import Question from "./Question";
-import Score from "./Score";
+import Score from "../quiz/score/Score";
 
 export default function Quiz(props) {
-  const { onQuizEnd, timerStart } = props;
+  const { onQuizEnd, timeUpOrStart } = props;
   const [quiz, setQuiz] = useState({
-    questionBank: qBank,
+    questionBank: shuffle(),
     currentQuestion: 0,
     selectedOption: "",
     score: 0,
     quizEnd: false,
+    wrongAnswer: 0,
+    positiveResult: [],
+    negativeResult: [],
   });
 
-  const { questionBank, currentQuestion, selectedOption, score, quizEnd } =
-    quiz;
+  const {
+    questionBank,
+    currentQuestion,
+    selectedOption,
+    score,
+    quizEnd,
+    wrongAnswer,
+    positiveResult,
+    negativeResult,
+  } = quiz;
 
   const handleOptionChange = (event) => {
     setQuiz((prevQuiz) => ({
@@ -23,7 +35,7 @@ export default function Quiz(props) {
       selectedOption: event.target.value,
     }));
   };
-  console.log("quiz====", quiz);
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
     checkAnswer();
@@ -32,9 +44,27 @@ export default function Quiz(props) {
 
   const checkAnswer = () => {
     if (selectedOption === questionBank[currentQuestion].answer) {
-      setQuiz((prevQuiz) => ({ ...prevQuiz, score: prevQuiz.score + 1 }));
+      setQuiz((prevQuiz) => ({
+        ...prevQuiz,
+        positiveResult: [
+          ...prevQuiz.positiveResult,
+          { ...questionBank[currentQuestion], selectedOption },
+        ],
+        score: prevQuiz.score + 1,
+      }));
+    } else {
+      setQuiz((prevQuiz) => ({
+        ...prevQuiz,
+        negativeResult: [
+          ...prevQuiz.negativeResult,
+          { ...questionBank[currentQuestion], selectedOption },
+        ],
+        wrongAnswer: prevQuiz.wrongAnswer + 1,
+      }));
     }
   };
+
+  console.log("quiz====", quiz);
 
   const handleNextQuestion = () => {
     if (currentQuestion + 1 < questionBank.length) {
@@ -60,7 +90,7 @@ export default function Quiz(props) {
   return (
     <>
       <div className="quiz-container">
-        {!quizEnd && timerStart && (
+        {!quizEnd && timeUpOrStart.timerStart && (
           <Question
             question={questionBank[currentQuestion]}
             selectedOption={selectedOption}
@@ -68,7 +98,14 @@ export default function Quiz(props) {
             onSubmit={handleFormSubmit}
           />
         )}
-        {quizEnd && <Score score={score} />}
+        {(quizEnd || timeUpOrStart.timeUp.length > 0) && (
+          <Score
+            score={score}
+            wrongAnswer={wrongAnswer}
+            positiveResult={positiveResult}
+            negativeResult={negativeResult}
+          />
+        )}
       </div>
     </>
   );
